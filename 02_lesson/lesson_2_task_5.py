@@ -10,8 +10,6 @@ def month_to_season(month_number):
     else:
         return "Неверный номер месяца"
 
-try:
-    month_number = int(input("Введите номер месяца (1-12): "))
-    print(month_to_season(month_number))
-except ValueError:
-    print("Пожалуйста, введите целое число от 1 до 12.")
+month_number = int(input("Введите номер месяца (1-12): "))
+
+print(month_to_season(month_number))
