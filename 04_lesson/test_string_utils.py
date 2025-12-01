@@ -9,22 +9,22 @@ stringutils = StringUtils()
         ("cun", "Cun"),
         ("привет", "Привет"),
         ("Moon", "Moon"),
-    ],
-)
+    ])
 def test_cap_positive(str, result):
     stringutils = StringUtils()
     assert stringutils.capitalize(str) == result
+
 
 @pytest.mark.parametrize(
     "str, result",
     [
         (" ", " "),
         ("123", "123")
-    ],
-)
+    ])
 def test_cap_negative(str, result):
     stringutils = StringUtils()
     assert stringutils.capitalize(str) == result
+
 
 @pytest.mark.parametrize(
     "str, result",
@@ -34,22 +34,22 @@ def test_cap_negative(str, result):
         ("Moon", "Moon"),
         ("   ", ""),
         ("   123", "123"),
-    ],
-)
+    ])
 def test_trim_positive(str, result):
     stringutils = StringUtils()
     assert stringutils.trim(str) == result
+
 
 @pytest.mark.parametrize(
     "str, result",
     [
         ("", ""),
         ("123", "123"),
-    ],
-)
+    ])
 def test_trim_negative(str, result):
     stringutils = StringUtils()
     assert stringutils.trim(str) == result
+
 
 @pytest.mark.parametrize(
     "string, symbol",
@@ -57,22 +57,22 @@ def test_trim_negative(str, result):
         ("cun", "u"),
         ("привет", "и"),
         ("Moon", "f"),
-    ],
-)
+    ])
 def test_con_positive(string: str, symbol: str):
     stringutils = StringUtils()
     assert stringutils.contains(string, symbol) > -1
+
 
 @pytest.mark.parametrize(
     "string, symbol",
     [
         ("", "u"),
         ("   ", "и"),
-    ],
-)
+    ])
 def test_con_negative(string: str, symbol: str):
     stringutils = StringUtils()
     assert stringutils.contains(string, symbol) > -1
+
 
 @pytest.mark.parametrize(
     "string, symbol",
@@ -80,11 +80,11 @@ def test_con_negative(string: str, symbol: str):
         ("cun", "u"),
         ("привет", "и"),
         ("Moon", "o"),
-    ],
-)
+    ])
 def test_del_positive(string, symbol):
     stringutils = StringUtils()
     assert stringutils.delete_symbol(string, symbol) == string.replace(symbol, "")
+
 
 @pytest.mark.parametrize(
     "string, symbol",
@@ -92,8 +92,7 @@ def test_del_positive(string, symbol):
         ("cn", "u"),
         ("првет", "и"),
         ("   ", "o"),
-    ],
-)
+    ])
 def test_del_negative(string, symbol):
     stringutils = StringUtils()
     assert stringutils.delete_symbol(string, symbol) == string.replace(symbol, "")
