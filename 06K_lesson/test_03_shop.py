@@ -5,8 +5,10 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 
+
 def test_shop():
-    driver = webdriver.Firefox(service=FirefoxService(GeckoDriverManager().install()))
+    driver = webdriver.Firefox(
+        service=FirefoxService(GeckoDriverManager().install()))
     driver.get("https://www.saucedemo.com/")
 
     username_input = driver.find_element(By.ID, "user-name")
@@ -21,9 +23,12 @@ def test_shop():
         EC.presence_of_element_located((By.CLASS_NAME, "inventory_item"))
     )
 
-    driver.find_element(By.ID, "add-to-cart-sauce-labs-backpack").click()
-    driver.find_element(By.ID, "add-to-cart-sauce-labs-bolt-t-shirt").click()
-    driver.find_element(By.ID, "add-to-cart-sauce-labs-onesie").click()
+    driver.find_element(
+        By.ID, "add-to-cart-sauce-labs-backpack").click()
+    driver.find_element(
+        By.ID, "add-to-cart-sauce-labs-bolt-t-shirt").click()
+    driver.find_element(
+        By.ID, "add-to-cart-sauce-labs-onesie").click()
 
     cart_icon = driver.find_element(By.CLASS_NAME, "shopping_cart_link")
     cart_icon.click()
@@ -50,8 +55,10 @@ def test_shop():
         EC.presence_of_element_located((By.CLASS_NAME, "summary_total_label"))
     )
 
-    total_element = driver.find_element(By.CSS_SELECTOR, ".summary_total_label")
+    total_element = driver.find_element(
+        By.CSS_SELECTOR, ".summary_total_label")
     total_text = total_element.text
     assert total_text == "Total: $58.29"
 
     driver.quit()
+
