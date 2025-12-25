@@ -1,18 +1,16 @@
 from selenium import webdriver
 from selenium.webdriver.firefox.service import Service as FirefoxService
 from webdriver_manager.firefox import GeckoDriverManager
-from selenium.webdriver.common.by import By
-from selenium.webdriver.support.ui import WebDriverWait
-from selenium.webdriver.support import expected_conditions as EC
-from selenium.webdriver.common.keys import Keys
 
 from AuthorizationPage import AuthorizationPage
-from MainPage import MainPage
+from MainPage_OS import MainPage
 from CardPage import CardPage
 from MakingToOrderPage import OrderPage
 
+
 def test_efficiency_online_store():
-    driver = webdriver.Firefox(service=FirefoxService(GeckoDriverManager().install()))
+    driver = webdriver.Firefox(
+        service=FirefoxService(GeckoDriverManager().install()))
 
     authorization_page = AuthorizationPage(driver)
     authorization_page.authorization()
@@ -31,4 +29,3 @@ def test_efficiency_online_store():
     driver.quit()
 
     assert total_text == "Total: $58.29"
-

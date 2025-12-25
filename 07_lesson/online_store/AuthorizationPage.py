@@ -1,9 +1,7 @@
-from selenium import webdriver
-from selenium.webdriver.firefox.service import Service as FirefoxService
-from webdriver_manager.firefox import GeckoDriverManager
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
+
 
 class AuthorizationPage:
     def __init__(self, driver):
@@ -22,5 +20,5 @@ class AuthorizationPage:
         login_button.click()
 
         WebDriverWait(self._driver, 10).until(
-        EC.presence_of_element_located((By.CLASS_NAME, "inventory_item"))
+            EC.presence_of_element_located((By.CLASS_NAME, "inventory_item"))
         )
