@@ -5,8 +5,8 @@ basic_url = 'https://yougile.com/api-v2'
 
 def get_api_key():
     params_my = {
-        'login': 'buko.darya@yandex.ru',
-        'password': '9753Wsxc',
+        'login': '',
+        'password': '',
         'name': 'Поток_100'
     }
     header = {'Content-Type': 'application/json'}
@@ -17,8 +17,8 @@ def get_api_key():
     company_id = company_data['content'][0]['id']
 
     params_of_api_key = {
-        'login': 'buko.darya@yandex.ru',
-        'password': '9753Wsxc',
+        'login': '',
+        'password': '',
         "companyId": company_id
     }
 
