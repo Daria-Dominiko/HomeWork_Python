@@ -5,7 +5,7 @@ basic_url = 'https://yougile.com/api-v2'
 
 def get_api_key():
     params_my = {
-        'login': '',
+        'login': '(вставить сюда и далее данные)',
         'password': '',
         'name': 'Поток_100'
     }
