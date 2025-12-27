@@ -5,7 +5,7 @@ basic_url = 'https://yougile.com/api-v2'
 
 def get_api_key():
     params_my = {
-        'login': '(вставить сюда и далее данные)',
+        'login': 'вставить данные',
         'password': '',
         'name': 'Поток_100'
     }
@@ -52,7 +52,6 @@ def test_create_project():
 
 
 def test_get_project():
-
     header = {
         'Content-Type': 'application/json',
         'Authorization': API_KEY
@@ -64,7 +63,6 @@ def test_get_project():
 
 
 def test_update_project():
-
     header = {
         'Content-Type': 'application/json',
         'Authorization': API_KEY
@@ -78,3 +76,49 @@ def test_update_project():
                             json=update_data,
                             headers=header)
     assert response.status_code == 200
+
+
+def test_create_project_empty_body():
+    header = {
+        'Content-Type': 'application/json',
+        'Authorization': API_KEY
+    }
+
+    response = requests.post(basic_url + '/projects',
+                             json={},
+                             headers=header)
+
+    assert response.status_code == 400
+
+
+def test_get_project_nonexistent_id():
+    header = {
+        'Content-Type': 'application/json',
+        'Authorization': API_KEY
+    }
+
+    nonexistent_id = '00000000-0000-0000-0000-000000000000'
+
+    response = requests.get(f"{basic_url}/projects/{nonexistent_id}",
+                            headers=header)
+
+    assert response.status_code == 404
+
+
+def test_update_project_invalid_id():
+    header = {
+        'Content-Type': 'application/json',
+        'Authorization': API_KEY
+    }
+
+    invalid_id = 'invalid-project-id-123'
+
+    update_data = {
+        'title': 'Новое название проекта'
+    }
+
+    response = requests.put(f"{basic_url}/projects/{invalid_id}",
+                            json=update_data,
+                            headers=header)
+
+    assert response.status_code == 404
